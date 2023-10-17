@@ -4,11 +4,13 @@ import { useState,useEffect } from 'react';
 
 import {ethers} from "ethers";
 import certificate from "./contracts/certificate.sol/certificate.json";
-const certificateAddress="0x4aF28d9e9e056620bbB78d8870b1942cc9B34954";
+const certificateAddress="0xA4F51373ab95B498b80310583A3521B5E6fB81Be";
 console.log(certificateAddress, "Counter ABI: ", certificate.abi);
 
 function App() {
- 
+  
+  const[address,setAddress]=useState("");
+
   const [_issuerAddress,set_issuerAddress]=useState("");
   const[_organisationName,set_organisationName]=useState("");
   const [_companyRegisteredNumber,set_companyRegisteredNumber]=useState(0);
@@ -27,13 +29,16 @@ function App() {
   const [rCertificateIssuer,set_rCertificateIssuer]=useState("");
   const [CertificateIssuer,setCertificateIssuer]=useState(null);
 
+  
 /////////////////////////////////////////////////////////////////////////////////////////////////////
 const Wallet =async ()=>{
 
   const provider = new ethers.BrowserProvider(window.ethereum);
   await window.ethereum.request({ method: "eth_requestAccounts" });
   const signer = await provider.getSigner();
-    console.log(signer.getAddress());
+  const _address = await signer.getAddress();
+  setAddress(_address);
+  console.log(address);
 }
 
 const connectionAllowingIssuer=async()=>{
@@ -55,7 +60,7 @@ const connectionAllowingIssuer=async()=>{
  }
 
  const connectionAllowingPeople=async()=>{
-  const provider = new ethers.BrowserProvider(window.ethereum);
+  const provider = new ethers.BrowserProvider(window. ethereum);
       await window.ethereum.request({ method: "eth_requestAccounts" });
       const signer = await provider.getSigner();
       const contract = new ethers.Contract(certificateAddress, certificate.abi, signer);
@@ -148,6 +153,7 @@ function setAllowingIssuer3(event){
     <div>
     <h1>CONNECT TO METAMASK</h1>
     <button onClick={Wallet}>Connect Wallet</button><br/><br/>
+    <h2>Account Address: {address}</h2>
     </div>
     <hr></hr>
     <div>
