@@ -1,70 +1,100 @@
-# Getting Started with Create React App
+# CertifyChain
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Index
 
-## Available Scripts
+- [CertifyChain](#certifychain)
+- [Index](#index)
+- [About](#about)
+  - [Techstack](#techstack)
+- [How to setup](#how-to-setup)
+  - [Clone the repo](#clone-the-repo)
+  - [Install dependencies](#install-dependencies)
+  - [Create a .env file](#create-a-env-file)
+- [Contracts](#contracts)
+  - [Conpile Contract (Hardhat)](#conpile-contract-hardhat)
+  - [Deploy Contract (Hardhat)](#deploy-contract-hardhat)
+- [Finally run the webapp](#finally-run-the-webapp)
+- [License](#license)
 
-In the project directory, you can run:
+# About
 
-### `npm start`
+CertifyChain is a project that aims to provide certificate management and verification through the Ethereum blockchain.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+The project is divided into two parts:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Techstack
 
-### `npm test`
+    - ReactJS
+    - RemixIDE
+    - Solidity
+    - EtherJS
+    - Hardhat
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+# How to setup
 
-### `npm run build`
+## Clone the repo
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Fork and clone the repo
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```bash
+git clone git:github@<YOUR_USERNAME>/CertifyChain.git
+cd CertifyChain
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Install dependencies
 
-### `npm run eject`
+```bash
+npm install
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Create a .env file
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Create a .env file in the root of the project and add the following variables:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+```bash
+INFURA_API_KEY=YOUR_INFURA_API_KEY
+PRIVATE_KEY=PVT_KEY_OF_YOUR_METAMASK_WALLET
+```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Replace the key with your Indura API key generated from [Infura](https://infura.io/) and the private key of your metamask wallet.
 
-## Learn More
+# Contracts
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Inside the `contracts` folder you will find the `certificate.sol` smart contract that will be deployed on the ethereum blockchain.
+Open the contract on [RemixIDE](https://remix.ethereum.org/) and deploy it on the Sepolia test network.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+**NOTE: Perform the following steps if you are deploying your own contract. A test contract has already been deployed at `0x4aF28d9e9e056620bbB78d8870b1942cc9B34954`**
 
-### Code Splitting
+## Conpile Contract (Hardhat)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+```bash
+npx hardhat compile
+```
 
-### Analyzing the Bundle Size
+## Deploy Contract (Hardhat)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+```bash
+npx hardhat run scripts/deploy.js --network sepolia
+```
 
-### Making a Progressive Web App
+After the contract is deployed, copy the contract address and paste it in the `App.js` `file in the`src` folder.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+```javascript
+const certificateAddress = "NEW_CONTRACT_ADDRESS";
+```
 
-### Advanced Configuration
+And replace the contract abi file in `contracts/certificate.sol/certificate.json`
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+# Finally run the webapp
 
-### Deployment
+```bash
+npm start
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+The webapp will be running on `localhost:3000`
 
-### `npm run build` fails to minify
+To open the same application of another device for testing purposes, make sure that the device is connected to the same network as the device on which the webapp is running. Then visit `http://<IP_ADDRESS_OF_THE_DEVICE_RUNNING_THE_WEBAPP>:3000`
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+# License
+
+The projects is licensed under [MIT](https://choosealicense.com/licenses/mit/)
