@@ -5,6 +5,7 @@ Handlers.add(
     Handlers.utils.hasMatchingTag("Action", "Register"),
     function (msg)
       table.insert(Members, msg.From)
+      print(msg)
       Handlers.utils.reply("registered")(msg)
     end
   )
