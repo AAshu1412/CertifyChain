@@ -1,6 +1,7 @@
 const { TurboFactory } = require('@ardrive/turbo-sdk') ;
 const fs = require("fs");
 const Arweave = require('arweave');
+const { join } = require("path");
 
 (async() => {
   const arweave = Arweave.init({
@@ -9,10 +10,9 @@ const Arweave = require('arweave');
     protocol: 'https'
   });
   
-  // import {fs} from 'fs';
   
   // load your JWK from a file or generate a new one
-  const jwk = fs.readFileSync('./wallet.json');
+  const jwk =JSON.parse(fs.readFileSync('./wallet.json')) ;
   const address = arweave.wallets.jwkToAddress(jwk);
   const turbo = TurboFactory.authenticated({ privateKey: jwk });
   
@@ -20,7 +20,7 @@ const Arweave = require('arweave');
   const { winc: balance } = await turbo.getBalance();
 
   // prep file for upload
-  const filePath = path.join(__dirname, './eye.jpeg');
+  const filePath = join(__dirname, 'eye.jpeg');
   const fileSize = fs.statSync(filePath).size;
   
   // get the cost of uploading the file
