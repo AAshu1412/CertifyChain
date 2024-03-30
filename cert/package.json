@@ -16,10 +16,12 @@
     "@emotion/styled": "^11.11.0",
     "arlocal": "^1.1.66",
     "arweave": "^1.15.0",
+    "arweave-wallet-connector": "^1.0.2",
     "framer-motion": "^11.0.22",
     "path": "^0.12.7",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-icons": "^5.0.1",
     "react-router-dom": "^6.22.3"
   },
   "devDependencies": {
