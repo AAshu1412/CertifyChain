@@ -8,4 +8,4 @@ Handlers.add(
       print(msg)
       Handlers.utils.reply("registered")(msg)
     end
-  )
+  ) 
