@@ -22,16 +22,16 @@ export default function Navbar() {
   };
 
   return (
-    <Flex bg="orange" p="25px" gap="80px" pl="100px" alignItems="center">
+    <Flex bg="orange" p="25px" gap="80px" px="100px" alignItems="center">
       <Avatar src="../../contract//eye.jpeg" size="lg"></Avatar>
       <HStack spacing="100px">
-        <Box fontSize="22px" fontWeight="bold">
+        <Box fontSize="22px" color="teal.700" fontWeight="bold">
           <NavLink to="/">Home</NavLink>
         </Box>
-        <Box fontSize="22px" fontWeight="bold">
+        <Box fontSize="22px" color="teal.700" fontWeight="bold">
           <NavLink to="/upload">Upload</NavLink>
         </Box>
-        <Box fontSize="22px" fontWeight="bold">
+        <Box fontSize="22px" color="teal.700" fontWeight="bold">
           <NavLink to="/about">About</NavLink>
         </Box>
       </HStack>
