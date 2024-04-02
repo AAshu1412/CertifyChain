@@ -23,7 +23,7 @@ export default function Navbar() {
 
   return (
     <Flex bg="orange" p="25px" gap="80px" px="100px" alignItems="center">
-      <Avatar src="../../contract//eye.jpeg" size="lg"></Avatar>
+      <Avatar src="../../contract//eye.jpeg" size="xl"></Avatar>
       <HStack spacing="100px">
         <Box fontSize="22px" color="teal.700" fontWeight="bold">
           <NavLink to="/">Home</NavLink>
