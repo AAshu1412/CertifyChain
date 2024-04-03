@@ -8,6 +8,7 @@ import {
   Image,
 } from "@chakra-ui/react";
 import certificate from "../assets/home1.jpeg";
+import { addrs } from "./Navbar";
 
 export default function Home() {
   return (
@@ -35,7 +36,7 @@ export default function Home() {
                 Platform
               </Text>
             </Box>
-            <Text>Address : 0x00000000000000000000</Text>
+            <Text>Address : {addrs}</Text>
           </VStack>
           <Image src={certificate} width="500px" borderRadius="20px"></Image>
         </Flex>

@@ -4,8 +4,14 @@ import { ArweaveWebWallet } from "arweave-wallet-connector";
 import { Icon } from "@chakra-ui/react";
 import { FaWallet } from "react-icons/fa6";
 import { TbLoader3 } from "react-icons/tb";
+import { useState } from "react";
+
+export var addrs = "0x0000000000000000";
+
 
 export default function Navbar() {
+ const [address,setAddress]=useState("");
+
   const connect_wallet = async () => {
     try {
       const wallet = new ArweaveWebWallet({
@@ -16,6 +22,8 @@ export default function Navbar() {
       wallet.setUrl("https://arweave.app");
       const no = await wallet.connect();
       console.log("dawdawdawdawd :::: " + no);
+      setAddress(no);
+      addrs=no;
     } catch (err) {
       console.log("Wallet Disconnected without sign");
     }
